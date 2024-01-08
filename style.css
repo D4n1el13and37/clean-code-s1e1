@@ -52,7 +52,7 @@ input,button{
 .todos__task {
   width: 56%;
   display: inline-block;
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .todos__task-add__wrapper {
@@ -156,18 +156,18 @@ input,button{
 
 /* Completed */
 .todos__list--compleated .todos__label {
-  text-decoration: line-through
+  text-decoration: line-through;
   color: #888;
 }
 
 /* Edit Task */
 .task__edit {
-  display: none
+  display: none;
 }
 
 .todos__item-change .task__edit {
   display: inline-block;
-  width: 224px
+  width: 224px;
 }
 
 .todos__item-change label {
