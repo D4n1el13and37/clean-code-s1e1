@@ -12,7 +12,8 @@ li {
   list-style: none;
 }
 
-input,button{
+input,
+button{
   outline: none;
 }
 
@@ -43,6 +44,7 @@ input,button{
     text-align: center;
   }
 }
+
 .todos {
   display: block;
   width: 500px;
