@@ -9,7 +9,7 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById("new-task");//Add a new task.
-var addButton=document.getElementsByTagName("button")[0];//first button
+var addButton=document.querySelector(".todos__add-button");//first button
 var incompleteTaskHolder=document.querySelector(".todos__list");//ul of #incompleteTasks
 var completedTasksHolder=document.querySelector(".todos__compleated");//completed-tasks
 
@@ -32,20 +32,21 @@ var createNewTaskElement=function(taskString){
     var deleteButton=document.createElement("button");//delete button
     var deleteButtonImg=document.createElement("img");//delete button image
 
+    listItem.className = 'todos__item';
+
     label.innerText=taskString;
-    label.className='task';
+    label.className='todos__label todos__task';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.className="todos__checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="todos__task task__edit";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="button";
-    editButton.className="edit";
+    editButton.className="button todos__edit-button";
 
-    deleteButton.className="button";
-    deleteButton.className="delete";
+    deleteButton.className="button todos__delete-button";
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
@@ -84,9 +85,9 @@ var editTask=function(){
 
     var listItem=this.parentNode;
 
-    var editInput=listItem.querySelector('input[type=text]');
-    var label=listItem.querySelector("label");
-    var editBtn=listItem.querySelector(".edit");
+    var editInput=listItem.querySelector('.task__edit');
+    var label=listItem.querySelector(".todos__label");
+    var editBtn=listItem.querySelector(".todos__edit-button");
     var containsClass=listItem.classList.contains("todos__item-change");
     //If class of the parent is .todos__item-change
     if(containsClass){
@@ -158,8 +159,8 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
 //select ListItems children
     var checkBox=taskListItem.querySelector("input[type=checkbox]");
-    var editButton=taskListItem.querySelector("button.edit");
-    var deleteButton=taskListItem.querySelector("button.delete");
+    var editButton=taskListItem.querySelector(".todos__edit-button");
+    var deleteButton=taskListItem.querySelector(".todos__delete-button");
 
 
     //Bind editTask to edit button.
@@ -172,6 +173,7 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
 
 //cycle over incompleteTaskHolder ul list items
 //for each list item
+console.log(incompleteTaskHolder.children[0]);
 for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
     //bind events to list items chldren(tasksCompleted)
